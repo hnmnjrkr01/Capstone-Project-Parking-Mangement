@@ -20,12 +20,12 @@ public class ParkingLevel {
     @Column(name = "level_id")
     private Integer levelId;
 
-    //---------One Parking-Level can have Many Bookings-------------
-
-    @OneToMany(mappedBy = "parkingLevel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Booking> bookings;
-
-    //--------------------------------------------------------------
+//    //---------One Parking-Level can have Many Bookings-------------
+//
+//    @OneToMany(mappedBy = "parkingLevel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private List<Booking> bookings;
+//
+//    //--------------------------------------------------------------
 
     //---------One Parking-Level can have Many Parking-Spots-------------
 

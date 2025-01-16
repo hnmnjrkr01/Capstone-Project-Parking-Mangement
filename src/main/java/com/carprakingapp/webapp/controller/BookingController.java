@@ -116,7 +116,7 @@ public class BookingController {
                 Booking booking = new Booking();
                 booking.setUserId(payment.getUserId());
                 booking.setPaymentMethodId(payment.getPaymentId());
-                booking.setLevelId(bookingDTO.getLevelId());
+               booking.setParkingSpotId(bookingDTO.getParkingSpotId());
                 booking.setStartDateTime(startDateTime);
                 booking.setEndDateTime(endDateTime);
                 booking.setDuration(duration);
@@ -134,72 +134,72 @@ public class BookingController {
         return response;
     }
 
-    @GetMapping("/availableSlots")
-    public ModelAndView availableSlots(@Valid SlotSearchDTO slotSearchDTO,
-                                       BindingResult bindingResult) throws Exception {
-        ModelAndView response = new ModelAndView();
-
-        User loggedUser = authenticatedUserService.loadCurrentUser();
-        response.addObject("loggedUser", loggedUser);
-
-
-        if (bindingResult.hasErrors()) {
-            response.addObject("bindingResult", bindingResult);
-            response.addObject("searchDTO", slotSearchDTO);
-
-            List<Booking> booking = bookingDAO.findByUserId(loggedUser.getId());
-            response.addObject("booking", booking);
-
-            response.setViewName("User/userDashboard");
-        } else {
-
-            response.setViewName("Booking/availableSlots");
-
-            BookingServices services = new BookingServices();
-            ParkingLevel parkingLevel = parkingLevelDAO.findByLevelId(slotSearchDTO.getLevelId());
-            int maxOccupancy = parkingLevel.getMaximumCapacity();
-            int busySlotsCounter = 0;
-            int availableSlots = 0;
-
-            //--------------Converting String to Date----------------------------------------------
-            SimpleDateFormat sdfStart = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-            Date start = sdfStart.parse(slotSearchDTO.getStartParkingTime());
-
-            SimpleDateFormat sdfEnd = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-            Date end = sdfEnd.parse(slotSearchDTO.getEndParkingTime());
-
-            //---------------Converting Date to localDateTime---------------------------------------
-            LocalDateTime startParking = services.convertToLocalDateTimeViaInstant(start);
-            LocalDateTime endParking = services.convertToLocalDateTimeViaInstant(end);
-
-
-            //---------------Searching on the database-----------------------------------
-            List<Booking> bookingsList = bookingDAO.findByLevelId(slotSearchDTO.getLevelId());
-            if (!bookingsList.isEmpty()) {
-
-                //-----------------filter out expired bookings--------------------------------
-                bookingsList.removeIf(n -> (n.getEndDateTime().isBefore(LocalDateTime.now())));
-
-                for (Booking booking : bookingsList) {
-
-                    if (services.isDateBetween(booking.getStartDateTime(), startParking, endParking)
-                            || services.isDateBetween(booking.getEndDateTime(), startParking, endParking)) {
-                        busySlotsCounter++;
-                    }
-
-                }
-                availableSlots = maxOccupancy - busySlotsCounter;
-            }
-
-            response.addObject("availableSlots", availableSlots);
-            response.addObject("startParking", startParking);
-            response.addObject("endParking", endParking);
-
-        }
-
-        return response;
-
-    }
+//    @GetMapping("/availableSlots")
+//    public ModelAndView availableSlots(@Valid SlotSearchDTO slotSearchDTO,
+//                                       BindingResult bindingResult) throws Exception {
+//        ModelAndView response = new ModelAndView();
+//
+//        User loggedUser = authenticatedUserService.loadCurrentUser();
+//        response.addObject("loggedUser", loggedUser);
+//
+//
+//        if (bindingResult.hasErrors()) {
+//            response.addObject("bindingResult", bindingResult);
+//            response.addObject("searchDTO", slotSearchDTO);
+//
+//            List<Booking> booking = bookingDAO.findByUserId(loggedUser.getId());
+//            response.addObject("booking", booking);
+//
+//            response.setViewName("User/userDashboard");
+//        } else {
+//
+//            response.setViewName("Booking/availableSlots");
+//
+//            BookingServices services = new BookingServices();
+//            ParkingLevel parkingLevel = parkingLevelDAO.findByLevelId(slotSearchDTO.getLevelId());
+//            int maxOccupancy = parkingLevel.getMaximumCapacity();
+//            int busySlotsCounter = 0;
+//            int availableSlots = 0;
+//
+//            //--------------Converting String to Date----------------------------------------------
+//            SimpleDateFormat sdfStart = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+//            Date start = sdfStart.parse(slotSearchDTO.getStartParkingTime());
+//
+//            SimpleDateFormat sdfEnd = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+//            Date end = sdfEnd.parse(slotSearchDTO.getEndParkingTime());
+//
+//            //---------------Converting Date to localDateTime---------------------------------------
+//            LocalDateTime startParking = services.convertToLocalDateTimeViaInstant(start);
+//            LocalDateTime endParking = services.convertToLocalDateTimeViaInstant(end);
+//
+//
+//            //---------------Searching on the database-----------------------------------
+//            List<Booking> bookingsList = bookingDAO.findByLevelId(slotSearchDTO.getLevelId());
+//            if (!bookingsList.isEmpty()) {
+//
+//                //-----------------filter out expired bookings--------------------------------
+//                bookingsList.removeIf(n -> (n.getEndDateTime().isBefore(LocalDateTime.now())));
+//
+//                for (Booking booking : bookingsList) {
+//
+//                    if (services.isDateBetween(booking.getStartDateTime(), startParking, endParking)
+//                            || services.isDateBetween(booking.getEndDateTime(), startParking, endParking)) {
+//                        busySlotsCounter++;
+//                    }
+//
+//                }
+//                availableSlots = maxOccupancy - busySlotsCounter;
+//            }
+//
+//            response.addObject("availableSlots", availableSlots);
+//            response.addObject("startParking", startParking);
+//            response.addObject("endParking", endParking);
+//
+//        }
+//
+//        return response;
+//
+//    }
 
 
 }

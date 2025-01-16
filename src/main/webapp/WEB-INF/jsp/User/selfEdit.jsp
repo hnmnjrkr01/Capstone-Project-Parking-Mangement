@@ -49,7 +49,7 @@
                     <label for="password">Password</label>
                 </td>
                 <td>
-                    <input type="password" id="password" name="password" value="${userEditDTO.password}" placeholder="Password" >
+                    <input type="password" id="password" name="password" value="" placeholder="Password" >
 
                     <c:if test="${bindingResult.hasFieldErrors('password')}">
                         <c:forEach var="error" items="${bindingResult.getFieldErrors('password')}">

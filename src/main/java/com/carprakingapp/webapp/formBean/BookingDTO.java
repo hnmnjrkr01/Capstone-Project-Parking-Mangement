@@ -17,8 +17,8 @@ public class BookingDTO {
 
     private Integer userId;
 
-    @NotNull(message = "Provide parking floor.")
-    private Integer levelId;
+    @NotNull(message = "Provide Parking Spot.")
+    private Integer parkingSpotId;
 
     private Integer paymentId;
 

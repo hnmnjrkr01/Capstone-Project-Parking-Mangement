@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,16 +29,14 @@ public class ParkingSpot {
     private Integer parkingLevelId;
     //-------------------------------------------------------------------
 
+    // ---------One Parking-Level can have One Bookings---------------------------------
+    @OneToMany(mappedBy = "parkingSpot", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Booking> bookingsOfParkingSpot;
+    //-----------------------------------------------------------------------------------
 
 
 
     @Column(name = "parking_spot_name")
     private String parkingSpotName;
-
-    @Column(name = "parking_occupancy", columnDefinition = "TINYINT")
-    private Boolean parkingOccupancy;
-
-
-
 
 }

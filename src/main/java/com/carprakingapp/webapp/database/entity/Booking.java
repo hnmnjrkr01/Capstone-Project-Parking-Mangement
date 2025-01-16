@@ -2,6 +2,7 @@ package com.carprakingapp.webapp.database.entity;
 
 
 import jakarta.persistence.*;
+import jdk.jfr.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -35,7 +37,6 @@ public class Booking {
 
 
     //---------One Payment-Method can have Many Bookings-----------
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "payment_method_id", nullable = false, insertable = false, updatable = false)
     @ToString.Exclude
@@ -43,20 +44,16 @@ public class Booking {
 
     @Column(name="payment_method_id")
     private Integer paymentMethodId;
-
     //-------------------------------------------------------------
 
 
-    //---------One Parking-Level can have Many Bookings-------------
-
+   // ---------One Parking-Level can have Many Bookings-------------
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "level_id", nullable = false, insertable = false, updatable = false)
-    @ToString.Exclude
-    private ParkingLevel parkingLevel;
+    @JoinColumn(name = "parking_spot_id", nullable = false)
+    private ParkingSpot parkingSpot;
 
-    @Column(name="level_id")
-    private Integer levelId;
-
+    @Column(name="parking_spot_id", insertable = false, updatable = false)
+    private Integer parkingSpotId;
     //--------------------------------------------------------------
 
 
@@ -75,13 +72,17 @@ public class Booking {
     @Column(name="license_plate_no")
     private String licensePlateNumber;
 
+//    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "booking_date")
+    private LocalDateTime bookingDate;
+
     @Override
     public String toString() {
         return "Booking{" +
                 "bookingId=" + bookingId +
                 ", userId=" + userId +
                 ", paymentMethodId=" + paymentMethodId +
-                ", levelId=" + levelId +
+                ", parkingSpotId=" + parkingSpotId +
                 ", totalPrice=" + totalPrice +
                 ", startDateTime=" + startDateTime +
                 ", endDateTime=" + endDateTime +
