@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Booking/availableSlots.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Booking" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/HomePage.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/OtherPages/contactUs.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/OtherPages" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/User/editUser.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/User" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/User/foundUsers.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/User" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/User/signin.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/User" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/User/signup.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/User" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/User/user.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/User" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/User/userSearch.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/User" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/include/header.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/include" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp" />
+      </map>
+    </option>
+  </component>
+</project>
