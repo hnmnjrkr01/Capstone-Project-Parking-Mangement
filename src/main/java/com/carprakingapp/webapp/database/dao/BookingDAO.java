@@ -27,10 +27,12 @@ public interface BookingDAO extends JpaRepository<Booking, Long> {
                     "and u.id=:userId;" , nativeQuery = true)
     List<String> paymentMethods(Integer userId);
 
-//    @Query(value = "select pl.level_code from parking_levels pl, bookings b, users u " +
-//                    "where pl.level_id = b.level_id " +
-//                    "and b.user_id = u.id " +
-//                    "and u.id= :userId;",nativeQuery = true)
-//    List<String> levelCodes(Integer userId);
+    //Read all the active bookings for a LevelId
+    @Query(value =  " select b.* from parking_levels pl, bookings b, parking_spots ps " +
+                    " where b.parking_spot_id = ps.parking_spot_id " +
+                    " and ps.parking_level_id = pl.level_id " +
+                    " and pl.level_id= :levelId " +
+                    " and b.end_date_time > CURDATE();" ,nativeQuery = true)
+      List<Booking> findByLevelId(Integer levelId);
 
 }

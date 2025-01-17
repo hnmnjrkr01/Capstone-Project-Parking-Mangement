@@ -9,4 +9,5 @@ import java.util.List;
 public interface ParkingSpotDAO extends JpaRepository<ParkingSpot, Long> {
 
     List<ParkingSpot> findByParkingLevelId(Integer parkingLevelId);
+
 }

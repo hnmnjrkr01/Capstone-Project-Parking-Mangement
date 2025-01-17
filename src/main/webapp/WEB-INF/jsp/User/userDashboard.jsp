@@ -104,23 +104,25 @@
             <tr>
                 <th>Booing-Id</th>
                 <th>Payment-Method</th>
-                <th>Floor-Level</th>
+                <th>Parking-Spot</th>
                 <th>Total-Price</th>
                 <th>Start Date & Time</th>
                 <th>End Date & Time</th>
                 <th>Duration</th>
                 <th>License PLate Number</th>
+                <th>Booking Date</th>
             </tr>
             <c:forEach var="booking" items="${booking}">
                 <tr>
                     <td>${booking.bookingId}</td>
                     <td>${booking.paymentMethodId}</td>
-                    <td>${booking.levelId}</td>
+                    <td>${booking.parkingSpotId}</td>
                     <td>${booking.totalPrice}</td>
                     <td>${booking.startDateTime}</td>
                     <td>${booking.endDateTime}</td>
                     <td>${booking.duration}</td>
                     <td>${booking.licensePlateNumber}</td>
+                    <td>${booking.bookingDate}</td>
                 </tr>
             </c:forEach>
         </table>
@@ -166,9 +168,9 @@
                     <td>
                         <select id="levelId" name="levelId" style="height: 40px; width: 300px;" >
                             <option value=" ">Select a Parking Floor</option>
-                            <option value="1">Floor-1</option>
-                            <option value="2">Floor-2</option>
-                            <option value="3">Floor-3</option>
+                            <option value="1">Level-1</option>
+                            <option value="2">Level-2</option>
+                            <option value="3">Level-3</option>
                         </select>
                         <c:if test="${bindingResult.hasFieldErrors('levelId')}">
                             <c:forEach var="error" items="${bindingResult.getFieldErrors('levelId')}">

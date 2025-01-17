@@ -49,10 +49,10 @@ public class Booking {
 
    // ---------One Parking-Level can have Many Bookings-------------
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "parking_spot_id", nullable = false)
+    @JoinColumn(name = "parking_spot_id", nullable = false, insertable = false, updatable = false)
     private ParkingSpot parkingSpot;
 
-    @Column(name="parking_spot_id", insertable = false, updatable = false)
+    @Column(name="parking_spot_id")
     private Integer parkingSpotId;
     //--------------------------------------------------------------
 
