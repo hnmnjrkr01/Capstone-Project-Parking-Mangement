@@ -41,7 +41,7 @@ Technologies Used:
 
 * Available-Spots for customers
 
-  ![image alt]()
+  ![image alt](https://github.com/hnmnjrkr01/Capstone-Project-Parking-Mangement/blob/a25de96a75ba0db206738881411b0f6b12916f38/avaiableSlotsforUser.png)
 
 *  Booking-Reservation
 
