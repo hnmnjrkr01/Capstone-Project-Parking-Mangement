@@ -10,6 +10,7 @@ Technologies Used:
 * Spring MVC
 * Spring-Boot
 * Spring Security
+* JPA-Repository
 * MySQL-Workbench
 * MySQL
 * Tomcat
