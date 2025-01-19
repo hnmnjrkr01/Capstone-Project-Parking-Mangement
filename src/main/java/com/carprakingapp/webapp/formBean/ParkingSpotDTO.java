@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.Length;
 @Getter
 public class ParkingSpotDTO {
 
-
+    private Integer parkingSpotId;
 
 
     @Length(max = 3, message = "Parking Spot name is an alphabet followed with digits.")

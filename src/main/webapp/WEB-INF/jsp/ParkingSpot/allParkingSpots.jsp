@@ -101,7 +101,7 @@
 
 <div class="rate-container">
     <div class="preBookStyle">
-        <form action="/ParkingSpot/manageParkingSpot">
+        <form action="/ParkingSpot/deactivateParkingSpot" method="post">
             <h2>All Parking Spots</h2>
             <table>
                 <tr>
@@ -109,6 +109,7 @@
                     <th>Action</th>
 
                 </tr>
+
                 <c:forEach var="allParkingLevels" items="${parkingLevelList}">
                     <tr>
                         <td colspan="2" style="text-align: left;">${allParkingLevels.levelCode}</td>
@@ -117,15 +118,19 @@
 
                         <c:if test="${allParkingLevels.levelId eq allParkingSpots.parkingLevelId}">
                             <tr>
-
                                 <td>${allParkingSpots.parkingSpotName}</td>
                                 <td>
                                     <c:if test="${allParkingSpots.disable}">
-                                      <button type="submit" class="btnact">Activate</button>
+                                      <button type="submit" class="btnact" onclick="submitForm('${allParkingSpots.parkingSpotId}')">Activate</button>
                                     </c:if>
                                     <c:if test="${!allParkingSpots.disable}">
-                                      <button type="submit" class="btn">Deactivate</button>
+                                      <button type="submit" class="btn" onclick="submitForm('${allParkingSpots.parkingSpotId}')">Deactivate</button>
                                     </c:if>
+                                    <h3 style="text-align: center; color: #fff;">
+                                        <c:if test="${not empty message}">
+                                            <div>${message}</div>
+                                        </c:if>
+                                    </h3>
                                 </td>
                             </tr>
                         </c:if>
@@ -133,9 +138,15 @@
                     </c:forEach>
                 </c:forEach>
             </table>
-
+            <input type="hidden" id="parkingSpotId" name="parkingSpotId" />
         </form>
     </div>
+
+    <script>
+        function submitForm(parkingSpotId){
+            document.getElementById("parkingSpotId").value = parkingSpotId;
+        }
+    </script>
 
 
 <jsp:include page="../include/footer.jsp"/>
