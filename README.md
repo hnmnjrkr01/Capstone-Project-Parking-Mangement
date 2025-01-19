@@ -30,7 +30,7 @@ Technologies Used:
   ![HomePage](https://github.com/user-attachments/assets/598f9682-f09a-4066-b4ac-7f40e3be0458)
 
 * Index-Page
-
+![image alt](https://github.com/hnmnjrkr01/Capstone-Project-Parking-Mangement/blob/916feb6f3471f203f4fad441f140d312fbc1f10a/indexPage.png)
 * User-SignUP
 
 * Available Slots to Book
