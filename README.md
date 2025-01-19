@@ -35,7 +35,7 @@ Technologies Used:
 * User-SignUP
 ![image alt](https://github.com/hnmnjrkr01/Capstone-Project-Parking-Mangement/blob/922abfaacb08956a0577540ed812e52e2bba3034/UserSignUp.png)
 
-* Available Slots to Book
+* Search Spots to Book
 
 ![image alt](https://github.com/hnmnjrkr01/Capstone-Project-Parking-Mangement/blob/922abfaacb08956a0577540ed812e52e2bba3034/avaiableSlotsforUserSearch.png)
 
