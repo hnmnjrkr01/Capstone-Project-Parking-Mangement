@@ -29,10 +29,13 @@ Technologies Used:
   
   ![HomePage](https://github.com/user-attachments/assets/598f9682-f09a-4066-b4ac-7f40e3be0458)
 
-*Index-Page
+* Index-Page
 
-<img width="237" alt="Easy Park (1)" src="https://github.com/user-attachments/assets/d728fdd0-e8a8-48aa-98aa-5ee73dcbafb5" />
-![allActivePArkingSpots](https://github.com/user-attachments/assets/32d81213-013a-43e9-a784-e3a56de0220e)
-![CarParkingApplication-DataModel](https://github.com/user-attachments/assets/1bee24a8-1115-45fc-a61a-27e0543ae96e)
-![HomePage](https://github.com/user-attachments/assets/e0386ee9-4879-4c91-b20b-bd30db09af3c)
-![indexPage](https://github.com/user-attachments/assets/35234295-8449-4bd5-8422-673045bbcf67)
+* User-SignUP
+
+* Available Slots to Book
+
+*  Booking-Reservation
+
+
+
