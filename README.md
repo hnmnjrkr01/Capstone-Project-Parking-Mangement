@@ -31,11 +31,21 @@ Technologies Used:
 
 * Index-Page
 ![image alt](https://github.com/hnmnjrkr01/Capstone-Project-Parking-Mangement/blob/916feb6f3471f203f4fad441f140d312fbc1f10a/indexPage.png)
+
 * User-SignUP
+![image alt](https://github.com/hnmnjrkr01/Capstone-Project-Parking-Mangement/blob/922abfaacb08956a0577540ed812e52e2bba3034/UserSignUp.png)
 
 * Available Slots to Book
 
+![image alt](https://github.com/hnmnjrkr01/Capstone-Project-Parking-Mangement/blob/922abfaacb08956a0577540ed812e52e2bba3034/avaiableSlotsforUserSearch.png)
+
+* Available-Spots for customers
+
+  ![image alt]()
+
 *  Booking-Reservation
+
+  ![image alt](https://github.com/hnmnjrkr01/Capstone-Project-Parking-Mangement/blob/922abfaacb08956a0577540ed812e52e2bba3034/bookingReservation.png)
 
 
 
