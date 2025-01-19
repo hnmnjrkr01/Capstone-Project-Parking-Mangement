@@ -35,7 +35,7 @@ public class BookingServices {
 
     public double totalPriceCalculation(Integer duration) {
 
-        double tax = 8.25;
+        double tax = 0.825;
         double totalPrice = 0;
 
         if(duration == 1){

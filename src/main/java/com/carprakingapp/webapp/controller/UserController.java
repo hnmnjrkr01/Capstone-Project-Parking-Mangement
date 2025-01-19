@@ -55,6 +55,7 @@ public class UserController {
     public ModelAndView searchUserByLastname(@RequestParam(required = false) String lastname){
         ModelAndView response = new ModelAndView();
 
+        LOG.info("****************Welcome to  User-Controller******************");
         response.setViewName("User/foundUsers");
 
         if(!lastname.isEmpty()) {
@@ -196,7 +197,7 @@ public class UserController {
 
         ModelAndView response = new ModelAndView();
         response.setViewName("User/signUp");
-
+        LOG.info("****************Welcome to  User-Controller******************");
         return response;
 
 

@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: hnmnj
-  Date: 1/1/2025
-  Time: 11:01 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
@@ -67,6 +60,7 @@
         font-size: 14px;
         color: #555;
     }
+
     .btn {
         background-color: #f39c12;
         color: #fff;
@@ -75,15 +69,30 @@
         border-radius: 5px;
         font-size: 1.2rem;
     }
+
     .btn:hover {
         background-color: #e67e22;
     }
 
-    a{
+    .btnact {
+      background-color: #fff;
+      color: #f39c12;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+    }
+
+    .btnact:hover {
+      background-color: #e67e22;
+    }
+
+    a {
         color: #fff;
         font-size: 1.2rem;
     }
-    a:hover{
+
+    a:hover {
         color: #e67e22;
     }
 
@@ -92,33 +101,41 @@
 
 <div class="rate-container">
     <div class="preBookStyle">
-        <form action="/Booking/parkingBooking">
-        <h2>Below are the ${availableSlots} available parking spots for the date and time of ${startParking} and ${endParking} on the level ${levelCode}.</h2>
-         <table>
-            <tr>
-                <th>Level</th>
-                <th>Spot Number</th>
-                <th>Book</th>
-            </tr>
-            <c:forEach var="allParkingSpots" items="${allParkingSpots}">
+        <form action="/ParkingSpot/manageParkingSpot">
+            <h2>All Parking Spots</h2>
+            <table>
                 <tr>
-                    <td>${levelCode}</td>
-                    <td>${allParkingSpots.parkingSpotName}</td>
-                    <td style="width: 100px"><button type="submit" class="btn" onclick="submitForm('${allParkingSpots.parkingSpotId}')">Book</button></td>
+                    <th>Parking Spot Name</th>
+                    <th>Action</th>
 
                 </tr>
-            </c:forEach>
-        </table>
-          <input type="hidden" id="startParking" name="startParking" value="${startParking}"/>
-            <input type="hidden" id="endParking"  name="endParking" value="${endParking}"/>
-            <input type="hidden" id="parkingSpotId" name="parkingSpotId" value=""/>
+                <c:forEach var="allParkingLevels" items="${parkingLevelList}">
+                    <tr>
+                        <td colspan="2" style="text-align: left;">${allParkingLevels.levelCode}</td>
+                    </tr>
+                    <c:forEach var="allParkingSpots" items="${parkingSpotList}">
+
+                        <c:if test="${allParkingLevels.levelId eq allParkingSpots.parkingLevelId}">
+                            <tr>
+
+                                <td>${allParkingSpots.parkingSpotName}</td>
+                                <td>
+                                    <c:if test="${allParkingSpots.disable}">
+                                      <button type="submit" class="btnact">Activate</button>
+                                    </c:if>
+                                    <c:if test="${!allParkingSpots.disable}">
+                                      <button type="submit" class="btn">Deactivate</button>
+                                    </c:if>
+                                </td>
+                            </tr>
+                        </c:if>
+
+                    </c:forEach>
+                </c:forEach>
+            </table>
+
         </form>
     </div>
 
-    <script>
-        function submitForm(spotid){
-            document.getElementById("parkingSpotId").value = spotid;
-        }
-    </script>
 
 <jsp:include page="../include/footer.jsp"/>

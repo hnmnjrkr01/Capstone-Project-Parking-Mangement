@@ -34,7 +34,8 @@ public class UserReviewController {
 
 
     @PostMapping("/review")
-    public ModelAndView userReview(@Valid UserReviewDTO userReviewDTO, BindingResult bindingResult, Model model) {
+    public ModelAndView userReview(@Valid UserReviewDTO userReviewDTO,
+                                   BindingResult bindingResult, Model model) {
 
         ModelAndView response = new ModelAndView();
         response.setViewName("OtherPages/contactUs");

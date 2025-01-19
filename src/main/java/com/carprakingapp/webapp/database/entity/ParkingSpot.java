@@ -39,4 +39,7 @@ public class ParkingSpot {
     @Column(name = "parking_spot_name")
     private String parkingSpotName;
 
+    @Column(name = "disable",columnDefinition = "TINYINT")
+    private Boolean disable;
+
 }

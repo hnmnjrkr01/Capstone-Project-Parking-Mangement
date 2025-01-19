@@ -23,7 +23,7 @@
                         <label for="startDateTime">From DateTime</label>
                     </td>
                     <td>
-                        <input type="datetime-local" id="startDateTime" name="startDateTime" placeholder="From" value="${bookingDTO.startDateTime}">
+                        <input type="datetime-local" id="startDateTime" name="startDateTime" placeholder="From" value="${bookingDTO.startDateTime}" readonly>
                         <c:if test="${bindingResult.hasFieldErrors('startDateTime')}">
                             <c:forEach var="error" items="${bindingResult.getFieldErrors('startDateTime')}">
                                 <div class="input_error">${error.getDefaultMessage()}</div>
@@ -36,7 +36,7 @@
                         <label for="endDateTime">To Date-Time</label>
                     </td>
                     <td>
-                        <input type="datetime-local" id="endDateTime" name="endDateTime" placeholder="To" value="${bookingDTO.endDateTime}">
+                        <input type="datetime-local" id="endDateTime" name="endDateTime" placeholder="To" value="${bookingDTO.endDateTime}" readonly>
                         <c:if test="${bindingResult.hasFieldErrors('endDateTime')}">
                             <c:forEach var="error" items="${bindingResult.getFieldErrors('endDateTime')}">
                                 <div class="input_error">${error.getDefaultMessage()}</div>
@@ -59,14 +59,29 @@
                 </tr>
                 <tr>
                     <td>
+                        <label for="parkingSpotName">Parking Spot</label>
+                    </td>
+                    <td>
+                        <input type="hidden" id="parkingSpotId" name="parkingSpotId" value="${bookingDTO.parkingSpotId}">
+                        <input type="text" id="parkingSpotName" name="parkingSpotName" value="${bookingDTO.parkingSpotName}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label for="levelId">Parking Level</label>
                     </td>
                     <td>
-                        <select id="levelId" name="levelId" style="height: 40px; width: 325px;" value="${bookingDTO.levelId}">
+                        <select id="levelId" name="levelId" style="height: 40px; width: 350px;" value="${bookingDTO.levelId}" aria-readonly="true">
                             <option value="">Select a Parking Floor</option>
-                            <option value="1">Floor-1</option>
-                            <option value="2">Floor-2</option>
-                            <option value="3">Floor-3</option>
+                            <option value="1"
+                                    <c:if test="${bookingDTO.levelId eq 1}">selected</c:if>
+                            >Floor-1</option>
+                            <option value="2"
+                                    <c:if test="${bookingDTO.levelId eq 2}">selected</c:if>
+                            >Floor-2</option>
+                            <option value="3"
+                                    <c:if test="${bookingDTO.levelId eq 3}">selected</c:if>
+                            >Floor-3</option>
                         </select>
                         <c:if test="${bindingResult.hasFieldErrors('levelId')}">
                             <c:forEach var="error" items="${bindingResult.getFieldErrors('levelId')}">
@@ -75,13 +90,14 @@
                         </c:if>
                     </td>
                 </tr>
+
                 <tr></tr> <tr></tr><tr></tr> <tr></tr> <tr></tr><tr></tr>
                 <tr>
                     <td>
                         <label for="paymentMethod">Payment Method</label>
                     </td>
                     <td>
-                        <select id="paymentMethod" name="paymentMethod"  style="height: 40px; width: 325px;" value="${bookingDTO.paymentMethod}">
+                        <select id="paymentMethod" name="paymentMethod"  style="height: 40px; width: 350px;" value="${bookingDTO.paymentMethod}">
                             <option value="">Select a payment method</option>
                             <option value="card">Card</option>
                             <option value="cash">Cash</option>
@@ -93,6 +109,15 @@
                                 <div class="input_error">${error.getDefaultMessage()}</div>
                             </c:forEach>
                         </c:if>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="totalPrice">Total Price</label>
+                    </td>
+                    <td>
+                        <input type="text" id="totalPrice" name="totalPrice" value="${bookingDTO.totalPrice}" readonly>
                     </td>
                 </tr>
 

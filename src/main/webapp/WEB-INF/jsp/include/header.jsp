@@ -18,37 +18,137 @@
   <title>CarParkingApplication - EasyPark </title>
 
 </head>
+
+<style>
+  .logo-container {
+    background-image: url("/pub/images/EasyParkLogo.png");
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-size: contain; /* Adjust size as needed */
+    width: 200px;  /* Set width of the container */
+    height: 40px; /* Set height of the container */
+  }
+
+  nav {
+    color: white;
+    padding: 0 20px;
+  }
+
+  .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  .menu > li {
+    position: relative;
+  }
+
+  .menu > li > a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #f39c12;
+    transition: background-color 0.3s;
+  }
+
+  .menu > li > a:hover {
+    background-color: #444;
+  }
+
+  /* Dropdown Menu */
+  .dropdown {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    z-index: 1000;
+  }
+
+  .dropdown li {
+    border-bottom: 1px solid #555;
+  }
+
+  .dropdown li:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #f39c12;
+    transition: background-color 0.3s;
+  }
+
+  .dropdown a:hover {
+    background-color: #555;
+  }
+
+  /* Show dropdown on hover */
+  .menu > li:hover .dropdown {
+    display: block;
+  }
+
+  /* Nested Dropdown */
+  .dropdown .nested-dropdown {
+    position: relative;
+  }
+
+  .dropdown .nested-dropdown .dropdown {
+    left: 100%;
+    top: 0;
+  }
+
+</style>
 <body>
 <header>
-  <h1>Welcome to EasyPark</h1>
+
   <nav>
+    <ul class="menu">
+      <li><div class="logo-container"></div></li>
+      <li><a href="/index">Home</a></li>
 
 
-    <a href="/index">Home</a>
 
+      <li>
+        <a href="#">User</a>
+        <ul class="dropdown">
+          <sec:authorize access="isAuthenticated()">
+          <li><a href="/User/userDashboard">Dashboard</a></li>
+          </sec:authorize>
 
-    <a href="/OtherPages/about">About</a>
+          <sec:authorize access="!isAuthenticated()">
+            <li><a href="/User/signUp">Sign Up</a></li>
+            <li><a href="/login/login">User Login</a></li>
+          </sec:authorize>
+          <li><a href="/login/logout">Logout</a></li>
+        </ul>
+      </li>
+      <sec:authorize access="hasAuthority('ADMIN')">
+      <li>
+        <a href="#">Admin</a>
+        <ul class="dropdown">
+          <li><a href="/User/userSearch">User Search</a></li>
+          <li><a href="/ParkingSpot/createParkingSpot">Create Parking Spot</a></li>
+          <li><a href="/ParkingSpot/getAllParkingSpots">All Parking Slots</a></li>
+        </ul>
+      </li>
+      </sec:authorize>
 
-
-    <a href="/OtherPages/contactUs">Contact</a>
-
-    <sec:authorize access="isAuthenticated()">
-    <a href="/User/userDashboard">Dashboard</a>
-    </sec:authorize>
-
-
-    <sec:authorize access="!isAuthenticated()">
-    <a href="/User/signUp">Sign Up</a>
-
-    <a href="/login/login">User Login</a>
-    </sec:authorize>
-
-    <a href="/login/logout">Logout</a>
-
-    <sec:authorize access="hasAuthority('ADMIN')">
-    <a href="/User/userSearch">User Search</a>
-    </sec:authorize>
-
+      <li>
+        <a href="/OtherPages/about">About</a>
+        <ul class="dropdown">
+          <li><a href="/OtherPages/about">About</a></li>
+          <li><a href="/OtherPages/contactUs">Contact</a></li>
+        </ul>
+      </li>
+    </ul>
 
   </nav>
 

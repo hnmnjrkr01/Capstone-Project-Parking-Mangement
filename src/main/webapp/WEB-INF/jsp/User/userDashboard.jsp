@@ -91,11 +91,10 @@
 
 
 <h2 style="text-align: end;">Welcome, ${loggedUser.firstname}! <br>
-    <a href="/User/myself/${loggedUser.id}">Edit My-Profile</a> <br>
-    <a href="/Booking/parkingBooking">Book New Parking</a>
+    <a href="/User/myself/${loggedUser.id}">Edit My-Profile</a>
 </h2>
 <hr>
-
+<br><br>
 
 <div class="rate-container">
     <div class="preBookStyle">
@@ -103,26 +102,23 @@
         <table>
             <tr>
                 <th>Booing-Id</th>
-                <th>Payment-Method</th>
                 <th>Parking-Spot</th>
                 <th>Total-Price</th>
                 <th>Start Date & Time</th>
                 <th>End Date & Time</th>
                 <th>Duration</th>
                 <th>License PLate Number</th>
-                <th>Booking Date</th>
             </tr>
             <c:forEach var="booking" items="${booking}">
                 <tr>
                     <td>${booking.bookingId}</td>
-                    <td>${booking.paymentMethodId}</td>
                     <td>${booking.parkingSpotId}</td>
-                    <td>${booking.totalPrice}</td>
+                    <td>$ ${booking.totalPrice}</td>
                     <td>${booking.startDateTime}</td>
                     <td>${booking.endDateTime}</td>
                     <td>${booking.duration}</td>
                     <td>${booking.licensePlateNumber}</td>
-                    <td>${booking.bookingDate}</td>
+
                 </tr>
             </c:forEach>
         </table>

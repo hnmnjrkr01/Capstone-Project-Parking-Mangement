@@ -17,10 +17,17 @@ public class BookingDTO {
 
     private Integer userId;
 
-    @NotNull(message = "Provide Parking Spot.")
+
     private Integer parkingSpotId;
 
+    private Integer levelId;
+
+    @NotEmpty(message = "Provide Parking Spot Name.")
+    private String parkingSpotName;
+
     private Integer paymentId;
+
+    private Double totalPrice;
 
     @NotEmpty(message = "Provide payment method. ")
     private String paymentMethod;

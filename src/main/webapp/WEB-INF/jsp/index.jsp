@@ -128,7 +128,7 @@
 <div class="rate-container">
     <div class="preBookStyle">
         <h1>Check Availability</h1>
-        <form id="bookingForm" action="/searchAvailability">
+        <form id="bookingForm" action="/searchAvailabilityForGuest" >
             <table>
                 <tr class="form-group">
                     <td>
@@ -212,21 +212,6 @@
 
     document.getElementsByName("startParkingTime")[0].min = today;
     document.getElementsByName("endParkingTime")[0].min = today;
-
-    document.getElementById("bookingForm").addEventListener("onClick", function(event) {
-        event.preventDefault();
-
-        const parkingFromDateTime = document.getElementById("startParkingTime").value;
-        const parkingToDateTime = document.getElementById("endParkingTime").value;
-
-        if (parkingFromDateTime != "" && parkingToDateTime != "") {
-            if(parkingFromDateTime > parkingToDateTime )
-                alert("Please select date after From Date");
-            //-------future code----------------------
-        }else {
-            alert("PLease sign up!")
-        }
-    });
 </script>
 
 

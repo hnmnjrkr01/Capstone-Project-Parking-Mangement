@@ -49,12 +49,48 @@ public class BookingController {
 
 
     @GetMapping("/parkingBooking")
-    public ModelAndView parkingBooking() {
+    public ModelAndView parkingBooking(@RequestParam String startParking,
+                                       @RequestParam String endParking,
+                                       @RequestParam String parkingSpotId) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("Booking/parkingBooking");
 
+        BookingDTO bookingDTO = new BookingDTO();
+
+        bookingDTO.setStartDateTime(startParking);
+        bookingDTO.setEndDateTime(endParking);
+        bookingDTO.setParkingSpotId(Integer.parseInt(parkingSpotId));         //Extracting int value from String Object
+
+        //-------------Get the ParkingSpot object------------------
+        ParkingSpot parkingSpot = parkingSpotDAO.findByParkingSpotId(Integer.parseInt(parkingSpotId));
+        bookingDTO.setLevelId(parkingSpot.getParkingLevelId());
+        bookingDTO.setParkingSpotName(parkingSpot.getParkingSpotName());
+
+
+
+        //--------------Converting String to Date----------------------------------------------
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        Date startParkingDate = formatter.parse(bookingDTO.getStartDateTime());
+        Date endParkingDate = formatter.parse(bookingDTO.getEndDateTime());
+
+        BookingServices services = new BookingServices();
+
+        //---------------Converting Date to localDateTime---------------------------------------
+        LocalDateTime startDateTime = services.convertToLocalDateTimeViaInstant(startParkingDate);
+        LocalDateTime endDateTime = services.convertToLocalDateTimeViaInstant(endParkingDate);
+
+        //--------------Calculating Duaration and Total-Price to save in Booking Entity------------
+        Integer duration = services.durationCalculation(startDateTime, endDateTime);
+        Double totalPrice = services.totalPriceCalculation(duration);
+
+        bookingDTO.setTotalPrice(totalPrice);
+        //-----------------------------------------------------------------------------------------
+
+
+
         User loggedUser = authenticatedUserService.loadCurrentUser();
         response.addObject("loggedUser", loggedUser);
+        response.addObject("bookingDTO", bookingDTO);
 
         return response;
     }
@@ -62,6 +98,7 @@ public class BookingController {
     @PostMapping("/bookNewParking")
     public ModelAndView bookNewParking(@Valid BookingDTO bookingDTO, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
+
 
         PaymentMethodDTO paymentMethodDTO = new PaymentMethodDTO();
 
@@ -126,8 +163,8 @@ public class BookingController {
                 booking.setEndDateTime(endDateTime);
                 booking.setDuration(duration);
                 booking.setTotalPrice(totalPrice);
+                booking.setBookingDate(LocalDateTime.now());
                 booking.setLicensePlateNumber(bookingDTO.getLicensePlateNumber());
-
 
                 bookingDAO.save(booking);
 
@@ -180,8 +217,8 @@ public class BookingController {
 
             //---------------Get all the booked spots for the Level-----------------------------------
             List<Booking> bookingsList = bookingDAO.findByLevelId(slotSearchDTO.getLevelId());
-            //----get all the spots under a level -------
-            List<ParkingSpot> allParkingSpots = parkingSpotDAO.findByParkingLevelId(slotSearchDTO.getLevelId());
+            //----get all the active spots under a level -------
+            List<ParkingSpot> allParkingSpots = parkingSpotDAO.findByparkingLevelIdAndDisable(slotSearchDTO.getLevelId(), false);
 
             if (!bookingsList.isEmpty()) {
 

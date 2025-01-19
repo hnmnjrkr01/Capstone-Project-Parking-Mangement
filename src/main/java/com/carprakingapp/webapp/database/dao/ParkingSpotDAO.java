@@ -10,4 +10,8 @@ public interface ParkingSpotDAO extends JpaRepository<ParkingSpot, Long> {
 
     List<ParkingSpot> findByParkingLevelId(Integer parkingLevelId);
 
+    ParkingSpot findByParkingSpotId(Integer parkingSpotId);
+
+    List<ParkingSpot> findByparkingLevelIdAndDisable(Integer parkingLevelId, Boolean disable);
+
 }

@@ -47,30 +47,39 @@ public class IndexController {
         return response;
     }
 
-    @GetMapping("/searchAvailability")
+    @GetMapping("/searchAvailabilityForGuest")
     public ModelAndView searchAvailability(@RequestParam String startParkingTime ,
                                            @RequestParam String endParkingTime
-                                           )throws Exception {
+                                           ) {
         ModelAndView response = new ModelAndView();
-        response.setViewName("Booking/availableSlots");
+        response.setViewName("Booking/availabilityForGuest");
 
         //--------------Converting String to Date----------------------------------------------
-        SimpleDateFormat sdfStart = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-        Date start = sdfStart.parse(startParkingTime);
+        try{
+            SimpleDateFormat sdfStart = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+            Date start = sdfStart.parse(startParkingTime);
 
-        SimpleDateFormat sdfEnd = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-        Date end = sdfEnd.parse(endParkingTime);
+            SimpleDateFormat sdfEnd = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+            Date end = sdfEnd.parse(endParkingTime);
 
-        //---------------Converting Date to localDateTime---------------------------------------
-        BookingServices services = new BookingServices();
-        LocalDateTime startParking = services.convertToLocalDateTimeViaInstant(start);
-        LocalDateTime endParking = services.convertToLocalDateTimeViaInstant(end);
+            //---------------Converting Date to localDateTime---------------------------------------
+            BookingServices services = new BookingServices();
+            LocalDateTime startParking = services.convertToLocalDateTimeViaInstant(start);
+            LocalDateTime endParking = services.convertToLocalDateTimeViaInstant(end);
 
-        long availableSlots = Math.round(Math.random()*20);
+            long availableSlots = Math.round(Math.random()*20);
 
-        response.addObject("availableSlots", availableSlots);
-        response.addObject("startParking", startParking);
-        response.addObject("endParking", endParking);
+            response.addObject("availableSlots", availableSlots);
+            response.addObject("startParking", startParking);
+            response.addObject("endParking", endParking);
+        } catch (Exception e) {
+            response.setViewName("Booking/availabilityForGuest");
+        }
+
+
+
+
+
 
         return response;
     }

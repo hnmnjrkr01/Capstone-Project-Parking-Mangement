@@ -24,17 +24,17 @@
     }
 
     a{
-        color: white;
+        color: #475E6F;
     }
 
     .bg-image {
         /* The image used */
-        background-image: url("/pub/images/image2.jpg");
+        background-image: url("/pub/images/CarParking.png");
 
         /* Add the blur effect */
-        filter: blur(8px);
+        /*filter: blur(8px);
         -webkit-filter: blur(8px);
-
+        */
         /* Full height */
         height: 100%;
 
@@ -50,7 +50,7 @@
         background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
         color: white;
         font-weight: bold;
-        border: 3px solid #f1f1f1;
+        border: 3px solid #475E6F;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -67,7 +67,9 @@
 <div class="bg-image"></div>
 
 <div class="bg-text">
-    <h1 style=" text-align: center; color: white; ">
+
+    <h1 style=" text-align: center; color: #475E6F; ">
+
         <a href="index">
             Welcome to Parking Application
         </a>
