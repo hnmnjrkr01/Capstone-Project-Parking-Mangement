@@ -63,7 +63,7 @@
 
     <br><br>
     <i style="color: #f39c12">
-      Kindly sign up for customized experience.
+      To book a spot please login or sign up.
     </i>
   </form>
 

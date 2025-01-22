@@ -44,19 +44,7 @@
                         </c:if>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <label for="licensePlateNumber">License Plate No</label>
-                    </td>
-                    <td>
-                        <input type="TEXT" id="licensePlateNumber" name="licensePlateNumber" placeholder="license Plate Number" value="${bookingDTO.licensePlateNumber}">
-                        <c:if test="${bindingResult.hasFieldErrors('licensePlateNumber')}">
-                            <c:forEach var="error" items="${bindingResult.getFieldErrors('licensePlateNumber')}">
-                                <div class="input_error">${error.getDefaultMessage()}</div>
-                            </c:forEach>
-                        </c:if>
-                    </td>
-                </tr>
+
                 <tr>
                     <td>
                         <label for="parkingSpotName">Parking Spot</label>
@@ -92,6 +80,19 @@
                 </tr>
 
                 <tr></tr> <tr></tr><tr></tr> <tr></tr> <tr></tr><tr></tr>
+                <tr>
+                    <td>
+                        <label for="licensePlateNumber">License Plate No</label>
+                    </td>
+                    <td>
+                        <input type="TEXT" id="licensePlateNumber" name="licensePlateNumber" placeholder="license Plate Number" value="${bookingDTO.licensePlateNumber}">
+                        <c:if test="${bindingResult.hasFieldErrors('licensePlateNumber')}">
+                            <c:forEach var="error" items="${bindingResult.getFieldErrors('licensePlateNumber')}">
+                                <div class="input_error">${error.getDefaultMessage()}</div>
+                            </c:forEach>
+                        </c:if>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <label for="paymentMethod">Payment Method</label>
